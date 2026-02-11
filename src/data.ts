@@ -21,6 +21,9 @@ function getLocalImage(name: string, type: 'balls' | 'passives'): string {
     'Egg-Sac|balls': `${BASE}images/balls/Egg-Sac.webp`,
     'Laser-Horizontal|balls': `${BASE}images/balls/Laser_horizontal.webp`,
     'Laser-Vertical|balls': `${BASE}images/balls/Laser_vertical.webp`,
+    // Эти же лазеры используются как "базовые" элементы, которые мы пометили type="passives" в данных
+    'Laser-Horizontal|passives': `${BASE}images/balls/Laser_horizontal.webp`,
+    'Laser-Vertical|passives': `${BASE}images/balls/Laser_vertical.webp`,
     // Passives / evolved passives
     'Deadeyes_Impaler|passives': `${BASE}images/passives/Deadeye-Impaler.webp`,
     'Grotesque_Artillery|passives': `${BASE}images/passives/Grotesque-Artillery.webp`,
@@ -29,7 +32,12 @@ function getLocalImage(name: string, type: 'balls' | 'passives'): string {
     'Phantom_Regalia|passives': `${BASE}images/passives/Phantom_Regalia.webp`,
     'Soul_Reaver|passives': `${BASE}images/passives/Soul_Reaver.webp`,
     'Tormenters_Mask|passives': `${BASE}images/passives/Tormenters_Mask.webp`,
-    'Wings_Of_The_Anointed|passives': `${BASE}images/passives/Wings_Of_The_Anointed.webp`
+    'Wings_Of_The_Anointed|passives': `${BASE}images/passives/Wings_Of_The_Anointed.webp`,
+    // Разные нестандартные написания / регистр
+    'Crown-of-Thorns|passives': `${BASE}images/passives/Crown_Of_Thorns.webp`,
+    'Eye_of_the_Beholder|passives': `${BASE}images/passives/Eye_Of_The_Beholder.webp`,
+    'Kiss_of_Death|passives': `${BASE}images/passives/Kiss_Of_Death.webp`,
+    'Iron_Onesie|passives': `${BASE}images/passives/Iron-Onesie.webp`
   };
 
   // Нормализуем базовое имя - приводим к формату имени файла

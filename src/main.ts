@@ -111,15 +111,26 @@ function setupSearch() {
 }
 
 function filterAndRender(data: Item[], type: 'balls' | 'passives', query: string) {
-  const filtered = query 
+  if (type === 'balls') {
+    // Для шаров: если строка поиска пустая, возвращаемся к "дефолтному" виду,
+    // где показаны только компоненты (renderBalls уже делает нужный фильтр)
+    if (!query) {
+      renderBalls();
+      return;
+    }
+
+    const filtered = data.filter(item =>
+      item.name.toLowerCase().includes(query)
+    );
+    renderItems(filtered, 'balls');
+    return;
+  }
+
+  // Пассивки: просто фильтруем по имени
+  const filtered = query
     ? data.filter(item => item.name.toLowerCase().includes(query))
     : data;
-  
-  if (type === 'balls') {
-    renderItems(filtered, 'balls');
-  } else {
-    renderItems(filtered, 'passives');
-  }
+  renderItems(filtered, 'passives');
 }
 
 function renderBalls() {
