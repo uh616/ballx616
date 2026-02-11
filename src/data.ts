@@ -17,13 +17,30 @@ function getLocalImage(name: string, type: 'balls' | 'passives'): string {
 
   // Специальные случаи, где имена файлов не совпадают с шаблоном
   const overrides: Record<string, string> = {
-    // Balls
+    // Базовые эффекты (мы пометили их как type="passives" в данных, но иконки лежат в balls/*_Ball.webp)
+    'Burn|passives': `${BASE}images/balls/Burn_Ball.webp`,
+    'Freeze|passives': `${BASE}images/balls/Freeze_Ball.webp`,
+    'Poison|passives': `${BASE}images/balls/Poison_Ball.webp`,
+    'Vampire|passives': `${BASE}images/balls/Vampire_Ball.webp`,
+    'Wind|passives': `${BASE}images/balls/Wind_Ball.webp`,
+    'Bleed|passives': `${BASE}images/balls/Bleed_Ball.webp`,
+    'Ghost|passives': `${BASE}images/balls/Ghost_Ball.webp`,
+    'Iron|passives': `${BASE}images/balls/Iron_Ball.webp`,
+    'Lightning|passives': `${BASE}images/balls/Lightning_Ball.webp`,
+    'Light|passives': `${BASE}images/balls/Light_Ball.webp`,
+    'Dark|passives': `${BASE}images/balls/Dark_Ball.webp`,
+    'Charm|passives': `${BASE}images/balls/Charm_Ball.webp`,
+    'Cell|passives': `${BASE}images/balls/Cell_Ball.webp`,
+    'Brood-Mother|passives': `${BASE}images/balls/Brood_Mother_Ball.webp`,
+    'Egg-Sac|passives': `${BASE}images/balls/Egg-Sac.webp`,
+    'Earthquake|passives': `${BASE}images/balls/Earthquake_Ball.webp`,
+    'Laser-Horizontal|passives': `${BASE}images/balls/Laser_horizontal.webp`,
+    'Laser-Vertical|passives': `${BASE}images/balls/Laser_vertical.webp`,
+
+    // Balls (нестандартные имена файлов)
     'Egg-Sac|balls': `${BASE}images/balls/Egg-Sac.webp`,
     'Laser-Horizontal|balls': `${BASE}images/balls/Laser_horizontal.webp`,
     'Laser-Vertical|balls': `${BASE}images/balls/Laser_vertical.webp`,
-    // Эти же лазеры используются как "базовые" элементы, которые мы пометили type="passives" в данных
-    'Laser-Horizontal|passives': `${BASE}images/balls/Laser_horizontal.webp`,
-    'Laser-Vertical|passives': `${BASE}images/balls/Laser_vertical.webp`,
     // Passives / evolved passives
     'Deadeyes_Impaler|passives': `${BASE}images/passives/Deadeye-Impaler.webp`,
     'Grotesque_Artillery|passives': `${BASE}images/passives/Grotesque-Artillery.webp`,
