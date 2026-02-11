@@ -41,6 +41,13 @@ function getLocalImage(name: string, type: 'balls' | 'passives'): string {
     'Egg-Sac|balls': `${BASE}images/balls/Egg-Sac.webp`,
     'Laser-Horizontal|balls': `${BASE}images/balls/Laser_horizontal.webp`,
     'Laser-Vertical|balls': `${BASE}images/balls/Laser_vertical.webp`,
+    'Freeze-Ray|balls': `${BASE}images/balls/Freeze_Ray_Ball.webp`,
+    'Frozen-Flame|balls': `${BASE}images/balls/Frozen_Flame_Ball.webp`,
+    'Mosquito-Swarm|balls': `${BASE}images/balls/Mosquito_Swarm_Ball.webp`,
+    'Nuclear-Bomb|balls': `${BASE}images/balls/Nuclear_Bomb_Ball.webp`,
+    'Radiation-Beam|balls': `${BASE}images/balls/Radiation_Beam_Ball.webp`,
+    'Soul-Sucker|balls': `${BASE}images/balls/Soul_Sucker_Ball.webp`,
+    'Vampire-Lord|balls': `${BASE}images/balls/Vampire_Lord_Ball.webp`,
     // Passives / evolved passives
     'Deadeyes_Impaler|passives': `${BASE}images/passives/Deadeye-Impaler.webp`,
     'Grotesque_Artillery|passives': `${BASE}images/passives/Grotesque-Artillery.webp`,
