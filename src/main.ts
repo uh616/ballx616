@@ -1,6 +1,7 @@
 import { ballsData, passivesData } from './data';
 import '../style.css';
 
+const BASE = (import.meta as any).env.BASE_URL || '/';
 interface Evolution {
   result: string;
   components: string[];
@@ -193,7 +194,7 @@ function renderItems(items: Item[], type: 'balls' | 'passives') {
   }
 }
 
-function renderColumn(items: Item[], containerId: string, _type: 'balls' | 'passives') {
+function renderColumn(items: Item[], containerId: string, type: 'balls' | 'passives') {
   const container = document.getElementById(containerId);
   if (!container) return;
 
@@ -215,19 +216,48 @@ function renderColumn(items: Item[], containerId: string, _type: 'balls' | 'pass
     
     // Экранируем имя для использования в placeholder
     const escapedName = item.name.replace(/"/g, '&quot;').replace(/'/g, '&#039;');
-    
+
+    // Генерируем варианты путей к картинке
+    // Самый надежный вариант — item.image из data.ts (там можно задавать overrides)
+    const baseName = item.name
+      .replace(/\s+/g, '_')
+      .replace(/'/g, '')
+      .replace(/\(/g, '')
+      .replace(/\)/g, '')
+      .trim();
+    const baseNameDash = baseName.replace(/_/g, '-');
+
+    const variants: string[] = [
+      item.image, // путь уже с BASE из data.ts
+      `${BASE}images/${type}/${baseName}_Ball.webp`,
+      `${BASE}images/${type}/${baseNameDash}_Ball.webp`,
+      `${BASE}images/${type}/${baseName}_Ball.jpg`,
+      `${BASE}images/${type}/${baseNameDash}_Ball.jpg`,
+      `${BASE}images/${type}/${baseName}.webp`,
+      `${BASE}images/${type}/${baseNameDash}.webp`,
+      `${BASE}images/${type}/${baseName}.jpg`,
+      `${BASE}images/${type}/${baseNameDash}.jpg`
+    ].filter(Boolean);
+
     // Создаем img элемент с логикой перебора вариантов
     const img = document.createElement('img');
     img.className = 'item-image';
     img.alt = item.name;
-    
-    img.src = item.image;
-    img.onerror = () => {
-      // Если по какой-то причине путь из data.ts не сработал, показываем placeholder,
-      // но не устраиваем цепочку из 404
-      img.src = `data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22100%22 height=%22100%22%3E%3Crect fill=%22%23d81b60%22 width=%22100%22 height=%22100%22/%3E%3Ctext x=%2250%22 y=%2250%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22white%22 font-size=%2212%22%3E${escapedName}%3C/text%3E%3C/svg%3E`;
-      img.onerror = null;
+
+    let currentVariant = 0;
+    const tryNextVariant = () => {
+      if (currentVariant < variants.length) {
+        img.src = variants[currentVariant];
+        currentVariant++;
+      } else {
+        // Если все варианты не сработали, показываем placeholder
+        img.src = `data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22100%22 height=%22100%22%3E%3Crect fill=%22%23d81b60%22 width=%22100%22 height=%22100%22/%3E%3Ctext x=%2250%22 y=%2250%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22white%22 font-size=%2212%22%3E${escapedName}%3C/text%3E%3C/svg%3E`;
+        img.onerror = null;
+      }
     };
+
+    img.onerror = tryNextVariant;
+    tryNextVariant(); // Начинаем с первого варианта
     
     card.appendChild(img);
     
@@ -332,9 +362,25 @@ function showComponentEvolutions(component: Item) {
           compDiv.style.background = 'var(--pink-subtle)';
         }
         
-        // Путь к картинке: берем compItem.image (мы уже задали его в data.ts)
+        // Путь к картинке: сначала compItem.image, затем фоллбеки по шаблону
+        const compType = ballsData.find(b => b.name === compName) ? 'balls' : 'passives';
+        const compBase = compName
+          .replace(/\s+/g, '_')
+          .replace(/'/g, '')
+          .replace(/\(/g, '')
+          .replace(/\)/g, '')
+          .trim();
+        const compBaseDash = compBase.replace(/_/g, '-');
         const compVariants: string[] = [
-          compItem?.image || ''
+          compItem?.image || '',
+          `${BASE}images/${compType}/${compBase}_Ball.webp`,
+          `${BASE}images/${compType}/${compBaseDash}_Ball.webp`,
+          `${BASE}images/${compType}/${compBase}_Ball.jpg`,
+          `${BASE}images/${compType}/${compBaseDash}_Ball.jpg`,
+          `${BASE}images/${compType}/${compBase}.webp`,
+          `${BASE}images/${compType}/${compBaseDash}.webp`,
+          `${BASE}images/${compType}/${compBase}.jpg`,
+          `${BASE}images/${compType}/${compBaseDash}.jpg`
         ].filter(Boolean);
         
         const compImg = document.createElement('img');
@@ -380,7 +426,25 @@ function showComponentEvolutions(component: Item) {
       const resultDiv = document.createElement('div');
       resultDiv.className = 'evolution-result';
       
-      const resultVariants: string[] = [evo.resultItem?.image || ''].filter(Boolean);
+      const resultType = ballsData.find(b => b.name === evo.result) ? 'balls' : 'passives';
+      const resultBase = evo.result
+        .replace(/\s+/g, '_')
+        .replace(/'/g, '')
+        .replace(/\(/g, '')
+        .replace(/\)/g, '')
+        .trim();
+      const resultBaseDash = resultBase.replace(/_/g, '-');
+      const resultVariants: string[] = [
+        evo.resultItem?.image || '',
+        `${BASE}images/${resultType}/${resultBase}_Ball.webp`,
+        `${BASE}images/${resultType}/${resultBaseDash}_Ball.webp`,
+        `${BASE}images/${resultType}/${resultBase}_Ball.jpg`,
+        `${BASE}images/${resultType}/${resultBaseDash}_Ball.jpg`,
+        `${BASE}images/${resultType}/${resultBase}.webp`,
+        `${BASE}images/${resultType}/${resultBaseDash}.webp`,
+        `${BASE}images/${resultType}/${resultBase}.jpg`,
+        `${BASE}images/${resultType}/${resultBaseDash}.jpg`
+      ].filter(Boolean);
       
       const resultImg = document.createElement('img');
       let resultIdx = 0;
