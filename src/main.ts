@@ -10,10 +10,9 @@ interface Evolution {
 interface Item {
   name: string;
   image: string;
+  description?: string;
   evolutions?: Evolution[];
 }
-
-let currentTab: 'balls' | 'passives' = 'balls';
 
 // Initialize
 document.addEventListener('DOMContentLoaded', () => {
@@ -84,8 +83,6 @@ function setupTabs() {
       
       btn.classList.add('active');
       document.getElementById(`${tab}-tab`)?.classList.add('active');
-      
-      currentTab = tab;
       
       if (tab === 'balls') {
         renderBalls();
