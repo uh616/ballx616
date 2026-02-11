@@ -1,6 +1,8 @@
 import { ballsData, passivesData } from './data';
 import '../style.css';
 
+const BASE = (import.meta as any).env.BASE_URL || '/';
+
 interface Evolution {
   result: string;
   components: string[];
@@ -191,15 +193,15 @@ function renderColumn(items: Item[], containerId: string, type: 'balls' | 'passi
     const baseNameDash = baseName.replace(/_/g, '-');
 
     const variants: string[] = [
-      item.image, // absolute from /images/... (самое важное!)
-      `/images/${type}/${baseName}_Ball.webp`,
-      `/images/${type}/${baseNameDash}_Ball.webp`,
-      `/images/${type}/${baseName}_Ball.jpg`,
-      `/images/${type}/${baseNameDash}_Ball.jpg`,
-      `/images/${type}/${baseName}.webp`,
-      `/images/${type}/${baseNameDash}.webp`,
-      `/images/${type}/${baseName}.jpg`,
-      `/images/${type}/${baseNameDash}.jpg`
+      item.image, // путь уже с BASE из data.ts
+      `${BASE}images/${type}/${baseName}_Ball.webp`,
+      `${BASE}images/${type}/${baseNameDash}_Ball.webp`,
+      `${BASE}images/${type}/${baseName}_Ball.jpg`,
+      `${BASE}images/${type}/${baseNameDash}_Ball.jpg`,
+      `${BASE}images/${type}/${baseName}.webp`,
+      `${BASE}images/${type}/${baseNameDash}.webp`,
+      `${BASE}images/${type}/${baseName}.jpg`,
+      `${BASE}images/${type}/${baseNameDash}.jpg`
     ];
     
     // Экранируем имя для использования в onerror
@@ -334,14 +336,14 @@ function showComponentEvolutions(component: Item) {
         const compBaseDash = compBase.replace(/_/g, '-');
         const compVariants: string[] = [
           compItem?.image || '',
-          `/images/${compType}/${compBase}_Ball.webp`,
-          `/images/${compType}/${compBaseDash}_Ball.webp`,
-          `/images/${compType}/${compBase}_Ball.jpg`,
-          `/images/${compType}/${compBaseDash}_Ball.jpg`,
-          `/images/${compType}/${compBase}.webp`,
-          `/images/${compType}/${compBaseDash}.webp`,
-          `/images/${compType}/${compBase}.jpg`,
-          `/images/${compType}/${compBaseDash}.jpg`
+          `${BASE}images/${compType}/${compBase}_Ball.webp`,
+          `${BASE}images/${compType}/${compBaseDash}_Ball.webp`,
+          `${BASE}images/${compType}/${compBase}_Ball.jpg`,
+          `${BASE}images/${compType}/${compBaseDash}_Ball.jpg`,
+          `${BASE}images/${compType}/${compBase}.webp`,
+          `${BASE}images/${compType}/${compBaseDash}.webp`,
+          `${BASE}images/${compType}/${compBase}.jpg`,
+          `${BASE}images/${compType}/${compBaseDash}.jpg`
         ].filter(Boolean);
         
         const compImg = document.createElement('img');
@@ -393,14 +395,14 @@ function showComponentEvolutions(component: Item) {
       const resultBaseDash = resultBase.replace(/_/g, '-');
       const resultVariants: string[] = [
         evo.resultItem?.image || '',
-        `/images/${resultType}/${resultBase}_Ball.webp`,
-        `/images/${resultType}/${resultBaseDash}_Ball.webp`,
-        `/images/${resultType}/${resultBase}_Ball.jpg`,
-        `/images/${resultType}/${resultBaseDash}_Ball.jpg`,
-        `/images/${resultType}/${resultBase}.webp`,
-        `/images/${resultType}/${resultBaseDash}.webp`,
-        `/images/${resultType}/${resultBase}.jpg`,
-        `/images/${resultType}/${resultBaseDash}.jpg`
+        `${BASE}images/${resultType}/${resultBase}_Ball.webp`,
+        `${BASE}images/${resultType}/${resultBaseDash}_Ball.webp`,
+        `${BASE}images/${resultType}/${resultBase}_Ball.jpg`,
+        `${BASE}images/${resultType}/${resultBaseDash}_Ball.jpg`,
+        `${BASE}images/${resultType}/${resultBase}.webp`,
+        `${BASE}images/${resultType}/${resultBaseDash}.webp`,
+        `${BASE}images/${resultType}/${resultBase}.jpg`,
+        `${BASE}images/${resultType}/${resultBaseDash}.jpg`
       ].filter(Boolean);
       
       const resultImg = document.createElement('img');

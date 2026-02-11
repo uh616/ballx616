@@ -13,21 +13,23 @@ interface Item {
 
 // Helper function to get local image path
 function getLocalImage(name: string, type: 'balls' | 'passives'): string {
+  const BASE = (import.meta as any).env.BASE_URL || '/';
+
   // Специальные случаи, где имена файлов не совпадают с шаблоном
   const overrides: Record<string, string> = {
     // Balls
-    'Egg-Sac|balls': '/images/balls/Egg-Sac.webp',
-    'Laser-Horizontal|balls': '/images/balls/Laser_horizontal.webp',
-    'Laser-Vertical|balls': '/images/balls/Laser_vertical.webp',
+    'Egg-Sac|balls': `${BASE}images/balls/Egg-Sac.webp`,
+    'Laser-Horizontal|balls': `${BASE}images/balls/Laser_horizontal.webp`,
+    'Laser-Vertical|balls': `${BASE}images/balls/Laser_vertical.webp`,
     // Passives / evolved passives
-    'Deadeyes_Impaler|passives': '/images/passives/Deadeye-Impaler.webp',
-    'Grotesque_Artillery|passives': '/images/passives/Grotesque-Artillery.webp',
-    'Cornucopia|passives': '/images/passives/Cornucopia.webp',
-    'Odiferous_Shell|passives': '/images/passives/Odiferous_Shell.webp',
-    'Phantom_Regalia|passives': '/images/passives/Phantom_Regalia.webp',
-    'Soul_Reaver|passives': '/images/passives/Soul_Reaver.webp',
-    'Tormenters_Mask|passives': '/images/passives/Tormenters_Mask.webp',
-    'Wings_Of_The_Anointed|passives': '/images/passives/Wings_Of_The_Anointed.webp'
+    'Deadeyes_Impaler|passives': `${BASE}images/passives/Deadeye-Impaler.webp`,
+    'Grotesque_Artillery|passives': `${BASE}images/passives/Grotesque-Artillery.webp`,
+    'Cornucopia|passives': `${BASE}images/passives/Cornucopia.webp`,
+    'Odiferous_Shell|passives': `${BASE}images/passives/Odiferous_Shell.webp`,
+    'Phantom_Regalia|passives': `${BASE}images/passives/Phantom_Regalia.webp`,
+    'Soul_Reaver|passives': `${BASE}images/passives/Soul_Reaver.webp`,
+    'Tormenters_Mask|passives': `${BASE}images/passives/Tormenters_Mask.webp`,
+    'Wings_Of_The_Anointed|passives': `${BASE}images/passives/Wings_Of_The_Anointed.webp`
   };
 
   // Нормализуем базовое имя - приводим к формату имени файла
@@ -46,11 +48,11 @@ function getLocalImage(name: string, type: 'balls' | 'passives'): string {
   
   // Для шаров формат: Name_Ball.webp
   if (type === 'balls') {
-    return `/images/${type}/${baseName}_Ball.webp`;
+    return `${BASE}images/${type}/${baseName}_Ball.webp`;
   }
   
   // Для пассивов формат: Name.webp (например, Archers_Effigy.webp)
-  return `/images/${type}/${baseName}.webp`;
+  return `${BASE}images/${type}/${baseName}.webp`;
 }
 
 // Helper to merge items with same name
