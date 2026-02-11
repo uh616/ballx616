@@ -4,26 +4,28 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ball X Pit - Evolution Guide</title>
-  <link rel="icon" type="image/png" href="/ballx616/logo.png">
+  <link rel="icon" type="image/png" href="/logo.png">
 </head>
 <body>
   <div class="container">
     <header>
-      <div class="logo-container">
-        <img src="/ballx616/logo.png" alt="Logo" class="logo">
-        <h1>Ball X Pit Evolution Guide</h1>
+      <div class="header-top">
+        <div class="logo-container">
+          <img src="/logo.png" alt="Logo" class="logo">
+          <h1>Ball X Pit Evolution Guide</h1>
+        </div>
+        <div class="telegram-link">
+          <a href="https://t.me/solnechniyre6enok" target="_blank" rel="noopener noreferrer">
+            <img src="/icon_telegram.png" alt="Telegram" class="telegram-icon">
+            Telegram
+          </a>
+        </div>
       </div>
-      <nav>
-        <button class="nav-btn active" data-tab="balls">Balls</button>
-        <button class="nav-btn" data-tab="passives">Passives</button>
-      </nav>
-      <div class="telegram-link">
-        <a href="https://t.me/solnechniyre6enok" target="_blank" rel="noopener noreferrer">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.161c-.174 1.858-.927 6.654-.927 6.654s-.139.933-.618 1.105c-.48.173-1.27-.345-1.27-.345l-3.5-2.35s-.48-.173-.48-.48c0-.308.48-.48.48-.48l2.78-.827 4.83-4.52s.346-.48.827-.173c.48.308.139.827.139.827l-1.73 5.38s-.139.827-.48.827c-.346 0-.827-.173-1.38-.48l-2.78-1.73s-.48-.173-.48-.48c0-.308.48-.48.48-.48l3.5-1.04s1.38-.48 1.38.173z"/>
-          </svg>
-          Telegram
-        </a>
+      <div class="nav-container">
+        <nav>
+          <button class="nav-btn active" data-tab="balls">Balls</button>
+          <button class="nav-btn" data-tab="passives">Passives</button>
+        </nav>
       </div>
     </header>
 
@@ -32,15 +34,8 @@
         <div class="search-container">
           <input type="text" id="balls-search" placeholder="Поиск шаров..." class="search-input">
         </div>
-        <div class="columns-container">
-          <div class="column">
-            <h2>With Evolutions</h2>
-            <div id="balls-evo" class="items-grid"></div>
-          </div>
-          <div class="column">
-            <h2>NO EVO</h2>
-            <div id="balls-no-evo" class="items-grid"></div>
-          </div>
+        <div class="items-container">
+          <div id="balls-items" class="items-grid"></div>
         </div>
       </div>
 
@@ -48,13 +43,14 @@
         <div class="search-container">
           <input type="text" id="passives-search" placeholder="Поиск пассивов..." class="search-input">
         </div>
-        <div class="columns-container">
-          <div class="column">
+        <div class="items-container">
+          <div class="passives-section">
             <h2>With Evolutions</h2>
-            <div id="passives-evo" class="items-grid"></div>
+            <div id="passives-with-evo" class="items-grid"></div>
           </div>
-          <div class="column">
-            <h2>NO EVO</h2>
+          <hr class="passives-divider">
+          <div class="passives-section">
+            <h2>No Evolution</h2>
             <div id="passives-no-evo" class="items-grid"></div>
           </div>
         </div>
@@ -70,7 +66,16 @@
     </div>
   </div>
 
-  <script type="module" src="/ballx616/src/main.ts"></script>
+  <footer>
+    <div class="footer-content">
+      <p>Support the author</p>
+      <a href="#" class="ton-link" id="ton-address" data-address="UQCU_NuO-7aKcYYiEsnkSd1rFpBtylB1C6upKWv7jY9r8ARe">
+        TON: UQCU_NuO-7aKcYYiEsnkSd1rFpBtylB1C6upKWv7jY9r8ARe
+      </a>
+    </div>
+  </footer>
+
+  <script type="module" src="/src/main.ts"></script>
 </body>
 </html>
 
