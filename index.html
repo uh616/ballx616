@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,17 +14,22 @@
           <img src="/logo.png" alt="Logo" class="logo">
           <h1>Ball X Pit Evolution Guide</h1>
         </div>
-        <div class="telegram-link">
-          <a href="https://t.me/solnechniyre6enok" target="_blank" rel="noopener noreferrer">
-            <img src="/icon_telegram.png" alt="Telegram" class="telegram-icon">
-            Telegram
-          </a>
+        <div class="header-right">
+          <div class="telegram-link">
+            <a href="https://t.me/solnechniyre6enok" target="_blank" rel="noopener noreferrer">
+              <img src="/icon_telegram.png" alt="Telegram" class="telegram-icon">
+              Telegram
+            </a>
+          </div>
         </div>
       </div>
       <div class="nav-container">
         <nav>
           <button class="nav-btn active" data-tab="balls">Balls</button>
           <button class="nav-btn" data-tab="passives">Passives</button>
+          <button class="nav-btn" data-tab="characters">Characters Combo</button>
+          <button class="nav-btn" data-tab="characters-tier">Characters Tier</button>
+          <button class="nav-btn" data-tab="build-guides">Build Guides</button>
         </nav>
       </div>
     </header>
@@ -32,7 +37,7 @@
     <main>
       <div id="balls-tab" class="tab-content active">
         <div class="search-container">
-          <input type="text" id="balls-search" placeholder="Поиск шаров..." class="search-input">
+          <input type="text" id="balls-search" placeholder="Search balls..." class="search-input">
         </div>
         <div class="items-container">
           <div id="balls-items" class="items-grid"></div>
@@ -41,7 +46,7 @@
 
       <div id="passives-tab" class="tab-content">
         <div class="search-container">
-          <input type="text" id="passives-search" placeholder="Поиск пассивов..." class="search-input">
+          <input type="text" id="passives-search" placeholder="Search passives..." class="search-input">
         </div>
         <div class="items-container">
           <div class="passives-section">
@@ -53,6 +58,24 @@
             <h2>No Evolution</h2>
             <div id="passives-no-evo" class="items-grid"></div>
           </div>
+        </div>
+      </div>
+
+      <div id="characters-tab" class="tab-content">
+        <div class="items-container">
+          <div id="characters-combos" class="combos-container"></div>
+        </div>
+      </div>
+
+      <div id="characters-tier-tab" class="tab-content">
+        <div class="items-container">
+          <div id="characters-tier-list" class="tier-list-container"></div>
+        </div>
+      </div>
+
+      <div id="build-guides-tab" class="tab-content">
+        <div class="items-container">
+          <div id="build-guides-list" class="build-guides-container"></div>
         </div>
       </div>
     </main>
