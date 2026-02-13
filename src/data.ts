@@ -321,7 +321,8 @@ const ballsRaw: Item[] = [
   },
   {
     name: "Stone",
-    image: getLocalImage("Stone", "balls")
+    image: getLocalImage("Stone", "balls"),
+    description: "Initially deals 300% damage. Damage erodes by 40% each time hitting an enemy (minimum 50%)."
   },
 
   // Evolved Balls
