@@ -30,6 +30,7 @@
           <button class="nav-btn" data-tab="characters">Characters Combo</button>
           <button class="nav-btn" data-tab="characters-tier">Characters Tier</button>
           <button class="nav-btn" data-tab="build-guides">Build Guides</button>
+          <button class="nav-btn" data-tab="best-base">Best Base Layout</button>
         </nav>
       </div>
     </header>
@@ -78,6 +79,12 @@
           <div id="build-guides-list" class="build-guides-container"></div>
         </div>
       </div>
+
+      <div id="best-base-tab" class="tab-content">
+        <div class="items-container">
+          <div id="best-base-content" class="best-base-container"></div>
+        </div>
+      </div>
     </main>
 
     <div id="evolution-modal" class="modal">
@@ -85,6 +92,13 @@
         <span class="close">&times;</span>
         <h2 id="modal-title"></h2>
         <div id="modal-evolutions"></div>
+      </div>
+    </div>
+
+    <div id="base-image-modal" class="modal base-modal">
+      <div class="modal-content base-modal-content">
+        <span class="close base-modal-close">&times;</span>
+        <img id="base-modal-image" src="" alt="Best Base Layout" class="base-modal-image">
       </div>
     </div>
   </div>

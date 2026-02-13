@@ -97,7 +97,7 @@ function setupTabs() {
 
   navButtons.forEach(btn => {
     btn.addEventListener('click', () => {
-      const tab = btn.getAttribute('data-tab') as 'balls' | 'passives' | 'characters' | 'characters-tier' | 'build-guides';
+      const tab = btn.getAttribute('data-tab') as 'balls' | 'passives' | 'characters' | 'characters-tier' | 'build-guides' | 'best-base';
       
       navButtons.forEach(b => b.classList.remove('active'));
       tabContents.forEach(t => t.classList.remove('active'));
@@ -115,6 +115,8 @@ function setupTabs() {
         renderCharacterTiers();
       } else if (tab === 'build-guides') {
         renderBuildGuides();
+      } else if (tab === 'best-base') {
+        renderBestBaseLayout();
       }
     });
   });
@@ -320,6 +322,72 @@ function setupModal() {
       if (modal) modal.style.display = 'none';
     }
   });
+}
+
+function renderBestBaseLayout() {
+  const container = document.getElementById('best-base-content');
+  if (!container) return;
+
+  container.innerHTML = '';
+
+  const wrapper = document.createElement('div');
+  wrapper.className = 'best-base-wrapper';
+
+  const title = document.createElement('h2');
+  title.className = 'best-base-title';
+  title.textContent = 'Best Base Layout';
+
+  const description = document.createElement('div');
+  description.className = 'best-base-description';
+  description.innerHTML = `
+    <p>This base design is with end game resource farming in mind.</p>
+    <p>Every resident building is being utilized.</p>
+    <p>There are 0 unused tiles inside the base layout.</p>
+    <p>All resource tiles can be collected during harvest.</p>
+    <p>All Infinite Stat Buildings can be upgraded in a single harvest.</p>
+    <p>You never have to mess around with rearranging the base</p>
+    <p>You never have to mess around with reassigning characters</p>
+    <p>The resources are prioritized in the following order Stone, Wood, Wheat.</p>
+  `;
+
+  const imageContainer = document.createElement('div');
+  imageContainer.className = 'best-base-image-container';
+
+  const img = document.createElement('img');
+  img.className = 'best-base-image';
+  img.src = `${BASE}images/base/OPTIMAL_BASE.jpg`;
+  img.alt = 'Best Base Layout';
+
+  imageContainer.appendChild(img);
+
+  wrapper.appendChild(title);
+  wrapper.appendChild(description);
+  wrapper.appendChild(imageContainer);
+
+  container.appendChild(wrapper);
+
+  // Modal for full-screen image
+  const modal = document.getElementById('base-image-modal');
+  const modalImg = document.getElementById('base-modal-image') as HTMLImageElement | null;
+  const closeBtn = document.querySelector('.base-modal-close') as HTMLElement | null;
+
+  if (img && modal && modalImg && closeBtn) {
+    img.style.cursor = 'zoom-in';
+    img.addEventListener('click', () => {
+      modal.style.display = 'flex';
+      modalImg.src = img.src;
+    });
+
+    closeBtn.addEventListener('click', () => {
+      modal.style.display = 'none';
+    });
+
+    window.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modal.style.display = 'none';
+      }
+    });
+  }
 }
 
 // Показываем все эволюции, где используется этот компонент (что из него крафтится)
@@ -992,7 +1060,7 @@ function renderBuildGuides(characterName?: string) {
     const bestBallsSection = document.createElement('div');
     bestBallsSection.className = 'build-guide-section';
     const bestBallsTitle = document.createElement('h3');
-    bestBallsTitle.textContent = 'Best Balls & Evolutions';
+  bestBallsTitle.textContent = 'Best Balls';
     bestBallsSection.appendChild(bestBallsTitle);
 
     guide.bestBalls.forEach(ball => {

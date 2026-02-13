@@ -1746,8 +1746,8 @@ export const buildGuides: CharacterBuildGuide[] = [
     strengths: "Consistent DPS, excellent scaling with status effects, great wave clear",
     weaknesses: "Low HP, relies on positioning, minimal crowd control",
     bestBalls: [
-      { name: "Noxious (Poison + Dark)", reason: "Noxious spreads poison to nearby enemies, perfect for pierce chains" },
-      { name: "Radiation Beam (Poison + Cell)", reason: "Radiation Beam increases damage received, boosting poison and crit output" },
+      { name: "Noxious (Poison + Wind or Dark + Wind)", reason: "Noxious spreads poison to nearby enemies, perfect for pierce chains" },
+      { name: "Radiation Beam (Laser + Poison/Cell)", reason: "Radiation Beam increases damage received, boosting poison and crit output" },
       { name: "Swamp (Poison + Earthquake)", reason: "Swamp slows targets while applying poison, adding control to his build" },
       { name: "Maggot (Cell + Brood Mother)", reason: "Maggot spawns baby balls that keep spreading poison and triggering Soul Reaver heals" }
     ],
@@ -1774,8 +1774,8 @@ export const buildGuides: CharacterBuildGuide[] = [
     bestBalls: [
       { name: "Blizzard (Freeze + Wind)", reason: "Blizzard freezes enemies for clean rebounds" },
       { name: "Frozen Flame (Freeze + Burn)", reason: "Frozen Flame adds Frostburn and amplifies all damage" },
-      { name: "Assassin (Dark + Ghost)", reason: "Assassin rewards back hits with bonus burst" },
-      { name: "Radiation Beam (Cell + Poison)", reason: "Radiation Beam increases incoming damage per stack to scale rebound hits" }
+      { name: "Assassin (Iron + Ghost or Iron + Dark)", reason: "Assassin rewards back hits with bonus burst" },
+      { name: "Radiation Beam (Laser + Poison/Cell)", reason: "Radiation Beam increases incoming damage per stack to scale rebound hits" }
     ],
     bestPassives: [
       { name: "Phantom Regalia", reason: "Phantom Regalia lets balls pierce before rebounding" },
@@ -1799,7 +1799,7 @@ export const buildGuides: CharacterBuildGuide[] = [
     weaknesses: "Low HP, low precision, weak early-game damage without evolutions",
     bestBalls: [
       { name: "Frozen Flame (Burn + Freeze)", reason: "Frozen Flame adds Frostburn that boosts all damage, perfect for Itchy Finger's nonstop fire rate." },
-      { name: "Radiation Beam (Poison + Cell)", reason: "Radiation Beam stacks damage on every hit, making his fast shots hit even harder." },
+      { name: "Radiation Beam (Laser + Poison/Cell)", reason: "Radiation Beam stacks damage on every hit, making his fast shots hit even harder." },
       { name: "Phantom (Dark + Ghost)", reason: "Phantom curses enemies and detonates fast, syncing perfectly with his rapid multi-hits." },
       { name: "Maggot (Cell + Brood Mother)", reason: "Maggot spawns baby balls on kills, giving Itchy Finger extra sustain and crowd control." }
     ],
@@ -1903,9 +1903,9 @@ export const buildGuides: CharacterBuildGuide[] = [
     weaknesses: "Low HP, needs positioning, weak if you whiff clusters",
     bestBalls: [
       { name: "Sun (Light + Burn)", reason: "Sun scorches everything his gravity drags in." },
-      { name: "Radiation Beam (Cell + Poison)", reason: "Radiation Beam stacks its damage multiplier per hit." },
+      { name: "Radiation Beam (Laser + Poison/Cell)", reason: "Radiation Beam stacks its damage multiplier per hit." },
       { name: "Blizzard (Freeze + Wind)", reason: "Blizzar freezes the entire group mid-pull, locking targets in place so all chained hits land." },
-      { name: "Noxious (Poison + Dark)", reason: "Noxious spreads poison between nearby enemies." }
+      { name: "Noxious (Poison + Wind or Dark + Wind)", reason: "Noxious spreads poison between nearby enemies." }
     ],
     bestPassives: [
       { name: "Magic Staff", reason: "Magic Staff boosts all AoE damage" },
@@ -1979,7 +1979,7 @@ export const buildGuides: CharacterBuildGuide[] = [
     strengths: "Increased critical hit chance is always handy.",
     weaknesses: "Shooting from the back of the screen gives you far less time to react as enemies pile up.",
     bestBalls: [
-      { name: "Holy Laser (Horizonal + Vertical Laser)", reason: "The Holy Laser should be your top priority as The Shade. This way you can deal with enemies all throughout the stage." },
+      { name: "Holy Laser (Horizontal + Vertical Laser)", reason: "The Holy Laser should be your top priority as The Shade. This way you can deal with enemies all throughout the stage." },
       { name: "Laser Beam (Horizontal or Vertical Laser + Light)", reason: "The Laser Beam is another great option to deal damage in lines, afflicting multiple enemies with blindness in the process." },
       { name: "Radiation Beam (Horizontal or Vertical Laser + Poison or Cell)", reason: "Dealing damage over time is also effective, and that's what the Radiation Beam does best." }
     ],
@@ -2054,8 +2054,8 @@ export const buildGuides: CharacterBuildGuide[] = [
     weaknesses: "The average run takes 5+ minutes longer than with any other character.",
     bestBalls: [
       { name: "Assassin (Iron + Dark)", reason: "Passes through enemies to deal a ton of damage all at once in a turn." },
-      { name: "Bomb (Iron + Fire)", reason: "The Bomb deals tons of AoE damage so that no matter where you shot ends up, it'll be lethal." },
-      { name: "Holy Laser (Vertical + Horizontal Laser)", reason: "You can't go wrong with extra AoE damage to ensure you're not missing any targets." },
+      { name: "Bomb (Iron + Burn)", reason: "The Bomb deals tons of AoE damage so that no matter where your shot ends up, it'll be lethal." },
+      { name: "Holy Laser (Horizontal + Vertical Laser)", reason: "You can't go wrong with extra AoE damage to ensure you're not missing any targets." },
       { name: "Nuclear Bomb (Bomb + Poison)", reason: "If you've already built the Bomb Evolution, why not go for the Nuclear option and deal even more damage over time?" }
     ],
     bestPassives: [
