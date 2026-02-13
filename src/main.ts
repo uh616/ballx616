@@ -355,6 +355,7 @@ function renderBestBaseLayout() {
 
   const img = document.createElement('img');
   img.className = 'best-base-image';
+  // Используем BASE для правильного пути в продакшене
   img.src = `${BASE}images/base/OPTIMAL_BASE.jpg`;
   img.alt = 'Best Base Layout';
 
@@ -965,25 +966,39 @@ function renderCharacterTiers() {
     cardElement.addEventListener('click', () => {
       const charName = card.querySelector('.tier-character-name')?.textContent;
       if (charName) {
-        // Переключаемся на вкладку Build Guides
-        const buildGuidesTab = document.querySelector('[data-tab="build-guides"]') as HTMLElement;
-        if (buildGuidesTab) {
-          buildGuidesTab.click();
-          // Прокручиваем к нужному персонажу после небольшой задержки
-          setTimeout(() => {
-            renderBuildGuides(charName);
+        // Проверяем, есть ли персонаж в buildGuides
+        const hasGuide = buildGuides.some(g => g.name === charName);
+        
+        // Переключаемся на вкладку Build Guides только если есть гайд
+        if (hasGuide) {
+          const buildGuidesTab = document.querySelector('[data-tab="build-guides"]') as HTMLElement;
+          if (buildGuidesTab) {
+            buildGuidesTab.click();
+            // Прокручиваем к нужному персонажу после небольшой задержки
             setTimeout(() => {
-              const guideElement = document.querySelector(`[data-character="${charName}"]`);
-              if (guideElement) {
-                guideElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                // Подсвечиваем элемент
-                guideElement.classList.add('highlight');
-                setTimeout(() => {
-                  guideElement.classList.remove('highlight');
-                }, 2000);
-              }
-            }, 50);
-          }, 100);
+              renderBuildGuides(charName);
+              setTimeout(() => {
+                const guideElement = document.querySelector(`[data-character="${charName}"]`);
+                if (guideElement) {
+                  guideElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                  // Подсвечиваем элемент
+                  guideElement.classList.add('highlight');
+                  setTimeout(() => {
+                    guideElement.classList.remove('highlight');
+                  }, 2000);
+                }
+              }, 50);
+            }, 100);
+          }
+        } else {
+          // Если гайда нет, переключаемся и показываем сообщение
+          const buildGuidesTab = document.querySelector('[data-tab="build-guides"]') as HTMLElement;
+          if (buildGuidesTab) {
+            buildGuidesTab.click();
+            setTimeout(() => {
+              renderBuildGuides(charName);
+            }, 100);
+          }
         }
       }
     });
@@ -1000,6 +1015,20 @@ function renderBuildGuides(characterName?: string) {
   const guidesToShow = characterName 
     ? buildGuides.filter(g => g.name === characterName)
     : buildGuides;
+
+  // Если персонаж не найден в buildGuides, показываем сообщение
+  if (characterName && guidesToShow.length === 0) {
+    const message = document.createElement('div');
+    message.className = 'build-guide-card';
+    message.style.textAlign = 'center';
+    message.style.padding = '40px';
+    message.innerHTML = `
+      <h2 style="color: var(--pink-main); margin-bottom: 16px;">Build Guide Not Available</h2>
+      <p style="color: var(--text-gray);">Build guide for "${characterName}" is not available yet.</p>
+    `;
+    container.appendChild(message);
+    return;
+  }
 
   guidesToShow.forEach(guide => {
     const guideCard = document.createElement('div');
