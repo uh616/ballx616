@@ -2072,6 +2072,58 @@ export const buildGuides: CharacterBuildGuide[] = [
     image: getCharacterImage("The Tactician")
   },
   {
+    name: "The Radical",
+    startingBall: "Wind",
+    passive: "Auto-plays with minimal player input, making evolutions on its own.",
+    strengths: "Fully automated gameplay lets you focus on positioning and pair choices while The Radical handles shooting and fusions.",
+    weaknesses: "Struggles against projectile-heavy bosses and gives you very little control over specific upgrade paths.",
+    bestBalls: [
+      { name: "Storm (Lightning + Wind)", reason: "Covers wide lanes automatically, letting The Radical clear most enemies without precise aiming." },
+      { name: "Blizzard (Freeze + Wind)", reason: "Freezes enemies into tight packs so automated shots keep hitting safely." },
+      { name: "Sandstorm (Earthquake + Wind)", reason: "Creates constant blind and chip damage zones that keep enemies under control while he auto-plays." },
+      { name: "Noxious (Poison + Wind or Dark + Wind)", reason: "Stacks poison across large areas with no extra input from the player." }
+    ],
+    bestPassives: [
+      { name: "Fleet Feet", reason: "Extra movement speed helps you dodge and position while The Radical auto-fires." },
+      { name: "Magic Staff", reason: "Boosts all the AoE damage from Storm, Blizzard, and Sandstorm." },
+      { name: "Magnet", reason: "Automatically collects XP and drops so you don't have to move off safe positions." },
+      { name: "Everflowing Goblet", reason: "Provides sustain and overheal so he can safely tank chip damage while auto-playing." }
+    ],
+    bestCharacterPair: {
+      name: "The Physicist",
+      reason: "Physicist's gravity wells pull enemies and projectiles into predictable lanes, making The Radical's automated shots much more reliable."
+    },
+    howToUnlock: "The Radical is unlocked by building the Campground, whose blueprint can be found as a random drop in the Heavenly x Gates biome.",
+    howToPlay: "Treat The Radical as a mostly hands-off character: your job is to pick safe positions and good pairings while he automatically selects upgrades, fusions, and shots. Focus on AoE control evolutions like Storm, Blizzard, and Sandstorm so his automated volleys constantly sweep the map. Since you can't control upgrade choices directly, prioritize generalist passives like Magic Staff and Magnet that are always useful. Be especially careful around projectile-heavy bosses, using movement and positioning to avoid patterns while your auto-firing build grinds them down.",
+    image: getCharacterImage("The Radical")
+  },
+  {
+    name: "The Cogitator",
+    startingBall: "Laser (Vertical)",
+    passive: "Automatically chooses upgrades, evolutions, and fusions for you.",
+    strengths: "Great for learning fusions and upgrade paths while still letting you control movement and aiming.",
+    weaknesses: "You can't reroll or banish upgrades, so builds can feel inconsistent and you lose control over specific synergies.",
+    bestBalls: [
+      { name: "Holy Laser (Horizontal + Vertical Laser)", reason: "Full-screen laser coverage works well no matter which upgrades the Cogitator auto-selects." },
+      { name: "Laser Beam (Horizontal or Vertical Laser + Light)", reason: "Adds strong line damage and Blind, shredding enemies in tight corridors." },
+      { name: "Radiation Beam (Horizontal or Vertical Laser + Poison or Cell)", reason: "Stacks damage over time along your laser paths, rewarding every hit." },
+      { name: "Nuclear Bomb (Bomb + Poison)", reason: "Gives you a reliable AoE option that doesn't depend on precise upgrade choices." }
+    ],
+    bestPassives: [
+      { name: "Magic Staff", reason: "Increases all AoE damage from your lasers and explosions, making every random evolution hit harder." },
+      { name: "Dynamite", reason: "Adds extra explosions on kills, turning any build into an AoE-oriented one." },
+      { name: "Pressure Valve", reason: "Makes every enemy explode on death, chaining damage through dense packs." },
+      { name: "Magnet", reason: "Ensures you keep leveling even when you're focused on dodging instead of collecting XP." }
+    ],
+    bestCharacterPair: {
+      name: "The Tactician",
+      reason: "Combining Cogitator's auto-upgrades with Tactician's turn-based pacing gives you time to plan movement while both characters handle most of the decision-making."
+    },
+    howToUnlock: "The Cogitator is unlocked by constructing the Villa, whose blueprint is found as a random drop in the Snowy x Shores biome.",
+    howToPlay: "Since the Cogitator automatically picks upgrades and fusions, focus on staying alive and steering your vertical laser through the densest parts of each wave. Let him handle fusion Reactor choices while you delay risky pickups until waves are under control, so accidental fusions don't ruin your positioning. Aim to grab broad, universally strong evolutions like Holy Laser, Laser Beam, and Radiation Beam that stay useful regardless of what passives he selects. Treat him as a teaching tool for learning upgrade paths while still playing normally, and lean on AoE passives so almost any random upgrade still contributes to a functional build.",
+    image: getCharacterImage("The Cogitator")
+  },
+  {
     name: "The Makeshift Sisyphus",
     startingBall: "Earthquake",
     passive: "No baby balls. Balls no longer deal damage on direct hit but AoE and status effect damage increased by 4x.",
